@@ -119,7 +119,6 @@ public class EventService {
 
     public int calculateDeletePoint(UUID reviewId) {
         //기존 리뷰에서 얼만큼 얻었나 확인
-        Integer integer = pointHistoryRepository.countByReviewId(reviewId);
-        return integer;
+        return pointHistoryRepository.countByReviewId(reviewId);
     }
 }

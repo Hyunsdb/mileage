@@ -29,7 +29,7 @@ public class Image {
     private String imageUrl; //이미지 조회 경로
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "review_uuid")
+    @JoinColumn(name = "review_id")
     private Review review;
 
     @Builder

@@ -15,6 +15,8 @@ import com.triple.mileage.domain.place.service.PlaceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityNotFoundException;
@@ -75,8 +77,11 @@ public class ReviewService {
                 .build();
     }
 
-    public void deleteReview(UUID reviewId) {
+    @DeleteMapping("/{reviewId}")
+    public void deleteReview(@PathVariable UUID reviewId) throws Exception {
         Review review = reviewRepository.findById(reviewId).orElseThrow(() -> new EntityNotFoundException("해당 리뷰가 없습니다"));
+        imageService.deleteImages(review);
+        
         reviewRepository.delete(review);
     }
 

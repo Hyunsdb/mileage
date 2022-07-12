@@ -36,7 +36,7 @@ public class ReviewController {
     }
 
     @DeleteMapping("/{reviewId}")
-    public void deleteReview(@PathVariable UUID reviewId) {
+    public void deleteReview(@PathVariable UUID reviewId) throws Exception {
         reviewService.deleteReview(reviewId);
     }
 }
